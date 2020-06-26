@@ -1,0 +1,39 @@
+// Here you can add other styles
+@import './kendo-ui.css';
+
+.card-body {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  padding: 1rem !important;
+}
+
+.main .container-fluid {
+  padding: 0 15px !important;
+}
+
+.button-datepicker-cus {
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #656565;
+  background-color: #f2f2f2;
+  padding: 0;
+  width: calc(8px + 1.4285714286em);
+  border-left-width: 0;
+}
+
+.mess-error {
+  color: #f86c6b;
+}
+
+.input-inValid {
+  border-color: #f86c6b;
+}
+
+.input-inValid > span {
+  border-color: #f86c6b !important;
+  border-radius: 0.25rem;
+}
+
+.input-inValid-datePickerBtn {
+  border-color: #f86c6b !important;
+  border-left-width: 0 !important;
+}

@@ -1,0 +1,188 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Demo</strong>
+        </div>
+        <div class="card-body">
+          <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="text"
+                       class="form-control"
+                       [ngClass]="{'input-inValid': editForm.get('username').invalid && (editForm.get('username').dirty || editForm.get('username').touched)}"
+                       name="username" id="field_username"
+                       formControlName="username"/>
+                <div
+                  *ngIf="editForm.get('username').invalid && (editForm.get('username').dirty || editForm.get('username').touched)">
+                  <small class="form-text mess-error"
+                         *ngIf="editForm.get('username').errors.required"> Đây là trường bắt buộc
+                  </small>
+                  <small class="form-text mess-error"
+                         *ngIf="editForm.get('username').errors.pattern">Không đúng định dạng
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <kendo-combobox
+                  name="cbGender"
+                  [data]="listDataCbGender"
+                  [textField]="'decode'"
+                  [valueField]="'code'"
+                  class="form-control"
+                  [ngClass]="{'input-inValid': editForm.get('gender').invalid && (editForm.get('gender').dirty || editForm.get('gender').touched)}"
+                  [filterable]="true"
+                  formControlName="gender"
+                  (filterChange)="doSearchCbGender($event)">
+                  <kendo-combobox-messages
+                    noDataText="Khong co du lieu">
+                  </kendo-combobox-messages>
+                </kendo-combobox>
+                <div
+                  *ngIf="editForm.get('gender').invalid && (editForm.get('gender').dirty || editForm.get('gender').touched)">
+                  <small class="form-text mess-error" *ngIf="editForm.get('gender').errors.required">Đây là trường bắt
+                    buộc
+                  </small>
+                </div>
+              </div>
+            </div><!--/.row-->
+            <div class="row">
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input id="field_dob"
+                         (dateSelect)="checkBod(editForm.get('dob').value)"
+                         (change)="checkBod(editForm.get('dob').value)"
+                         [ngClass]="{'input-inValid': (editForm.get('dob').invalid || !isBodValid) && (editForm.get('dob').dirty || editForm.get('dob').touched) }"
+                         type="text"
+                         class="form-control"
+                         name="dob"
+                         ngbDatepicker
+                         [placeholder]="'dd/MM/yyyy'"
+                         #dobDp="ngbDatepicker"
+                         formControlName="dob"
+                  />
+                  <span class="input-group-append">
+                      <button type="button" class="btn btn-secondary button-datepicker-cus" [ngClass]="{'input-inValid-datePickerBtn': (editForm.get('dob').invalid || !isBodValid) && (editForm.get('dob').dirty || editForm.get('dob').touched) }"
+                              (click)="dobDp.toggle()">
+                        <i class="fa fa-calendar"></i>
+                      </button>
+                </span>
+                </div>
+                <div *ngIf="editForm.get('dob').invalid && (editForm.get('dob').dirty || editForm.get('dob').touched)">
+                  <small class="form-text mess-error"
+                         *ngIf="editForm.get('dob').errors.ngbDate">Không đúng định dạng
+                  </small>
+                  <small class="form-text mess-error"
+                         *ngIf="editForm.get('dob').errors.required">Đây là trường bắt buộc
+                  </small>
+                </div>
+                <div *ngIf="!editForm.get('dob').invalid && (editForm.get('dob').dirty || editForm.get('dob').touched)">
+                  <small class="form-text mess-error" *ngIf="!isBodValid">Độ tuổi phải trong khoảng 18 -> 99
+                  </small>
+                </div>
+              </div>
+            </div><!--/.row-->
+          </form>
+
+
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label for="ccmonth">Month</label>
+              <select class="form-control" id="ccmonth">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-4">
+              <label for="ccyear">Year</label>
+              <select class="form-control" id="ccyear">
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+                <option>2023</option>
+                <option>2024</option>
+                <option>2025</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="cvv">CVV/CVC</label>
+                <input type="text" class="form-control" id="cvv" placeholder="123">
+              </div>
+            </div>
+          </div><!--/.row-->
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+</div>
+
+<div class="animated fadeIn">
+  <ng-template #template let-anchor>
+    <span>{{ anchor.nativeElement.innerText }}</span>
+  </ng-template>
+  <div kendoTooltip
+       showOn="none"
+       [tooltipTemplate]="template"
+       filter=".k-grid td"
+       (mouseover)="showTooltip($event)">
+    <kendo-grid
+      [data]="gridView | async"
+      [loading]="false"
+      [pageable]="pageableConfig"
+      [pageSize]="stateGrid.take"
+      [skip]="stateGrid.skip"
+      [sort]="stateGrid.sort"
+      [sortable]="true"
+      [scrollable]="true"
+      [resizable]="true"
+      (dataStateChange)="dataStateChange($event)"
+      [selectable]="{checkboxOnly: true}"
+      [kendoGridSelectBy]="'id'"
+      [selectedKeys]="gridUserSelection"
+    >
+      <kendo-grid-messages
+        columnsApply="Áp dụng"
+        columns="Cột"
+        columnsReset="Hoàn tác"
+        pagerPage="Trang"
+        pagerOf="của"
+        pagerItems="Bản ghi"
+        pagerItemsPerPage="A"
+        noRecords="Không có dữ liệu"
+      >
+      </kendo-grid-messages>
+      <ng-template kendoGridToolbarTemplate>
+        <kendo-grid-column-chooser style="float:right;" [allowHideAll]="false"></kendo-grid-column-chooser>
+      </ng-template>
+
+      <kendo-grid-checkbox-column showSelectAll="true"></kendo-grid-checkbox-column>
+      <kendo-grid-column field="id"></kendo-grid-column>
+      <kendo-grid-column field="stt" title="STT" [sortable]="false">
+        <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
+          <span>{{rowIndex + 1}}</span>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="fullName" title="Tên"></kendo-grid-column>
+    </kendo-grid>
+  </div>
+</div>
