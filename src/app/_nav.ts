@@ -47,5 +47,10 @@ export const navItems: NavData[] = [
     name: 'Demo',
     url: '/pages/demo',
     icon: 'icon-drop'
+  },
+  {
+    name: 'Quản lý khách hàng',
+    url: '/pages/demo',
+    icon: 'icon-drop'
   }
 ];

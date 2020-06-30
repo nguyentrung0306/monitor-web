@@ -33,6 +33,7 @@ export class DemoComponent {
   public isBodValid = true;
   dobDp: any;
   public listDataCbGender: Array<any> = [];
+  result: any[];
   editForm = this.fb.group({
     username: [null, [Validators.required, Validators.maxLength(50), Validators.pattern('^[_A-Za-z0-9]*$')]],
     passwordHash: [
@@ -97,5 +98,11 @@ export class DemoComponent {
     } else {
       this.tooltipDir.hide();
     }
+  }
+
+  getAll() {
+    this.demoService.getAll().subscribe((res: any[]) => {
+      this.result = res;
+    });
   }
 }

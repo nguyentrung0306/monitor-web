@@ -29,4 +29,8 @@ export class DemoService extends BehaviorSubject<any> {
       );
   }
   // End grid
+
+  public getAll() {
+    return this.http.get<any>(`http://localhost:7000/user/getAllUser`);
+  }
 }
