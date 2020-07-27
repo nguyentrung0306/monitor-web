@@ -13,6 +13,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import {NgbDateParserFormatter, NgbDatepickerI18n, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDateFormatterCustom} from '../../utils/NgbDateFormatterCustom';
 import {CustomDatepickerI18n} from '../../utils/CustomDatepickerI18n';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import {CustomDatepickerI18n} from '../../utils/CustomDatepickerI18n';
     { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n}
   ],
   declarations: [
-    DemoComponent
+    DemoComponent,
+    UserComponent
   ]
 })
 export class PagesModule { }

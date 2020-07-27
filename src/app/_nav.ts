@@ -43,14 +43,14 @@ export const navItems: NavData[] = [
     title: true,
     name: 'Test'
   },
-  {
-    name: 'Demo',
-    url: '/pages/demo',
-    icon: 'icon-drop'
-  },
+  // {
+  //   name: 'Demo',
+  //   url: '/pages/demo',
+  //   icon: 'icon-drop'
+  // },
   {
     name: 'Quản lý khách hàng',
-    url: '/pages/demo',
+    url: '/pages/user',
     icon: 'icon-drop'
   }
 ];
