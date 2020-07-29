@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
     pageSizes: true,
     previousNext: true
   };
-  public gridView: Observable<GridDataResult>;
+  public gridView: GridDataResult;
   public gridUserSelection: number[] = [];
   public stateGrid: State = {
     skip: 0,
@@ -50,19 +50,16 @@ export class UserComponent implements OnInit {
   constructor(
     private demoService: DemoService,
     private fb: FormBuilder,
-  ) {
-    this.gridView = demoService;
-    this.listDataCbGender.push({code: 1, decode: 'Nam'});
-    this.listDataCbGender.push({code: 2, decode: 'Nữ'});
-  }
-
-  save() {
-  }
+  ) {}
 
   // Grid
   public dataStateChange(state: DataStateChangeEvent): void {
     this.stateGrid = state;
-    this.doQueryDataGrid(state);
+    this.gridView = {
+      data: this.result.slice(this.stateGrid.skip, this.stateGrid.skip + this.stateGrid.take),
+      total: this.result.length
+    };
+    // this.doQueryDataGrid(state);
   }
 
   public doQueryDataGrid(state: any) {
@@ -96,6 +93,10 @@ export class UserComponent implements OnInit {
         total: this.result.length
       };
     });
+  }
+  delete(gridUserSelection) {
+    console.log('my selection', gridUserSelection);
+    this.demoService.deleteByListId(gridUserSelection);
   }
 
   ngOnInit() {
