@@ -14,6 +14,8 @@ import {NgbDateParserFormatter, NgbDatepickerI18n, NgbDatepickerModule} from '@n
 import {NgbDateFormatterCustom} from '../../utils/NgbDateFormatterCustom';
 import {CustomDatepickerI18n} from '../../utils/CustomDatepickerI18n';
 import { UserComponent } from './user/user.component';
+import { CreateComponentComponent } from './create-component/create-component.component';
+import { TemplateComponentComponent } from './template-component/template-component.component';
 
 @NgModule({
   imports: [
@@ -35,7 +37,9 @@ import { UserComponent } from './user/user.component';
   ],
   declarations: [
     DemoComponent,
-    UserComponent
+    UserComponent,
+    CreateComponentComponent,
+    TemplateComponentComponent
   ]
 })
 export class PagesModule { }

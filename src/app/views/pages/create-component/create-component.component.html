@@ -1,0 +1,28 @@
+<!--<button type="button" (click)="generate()">Generate</button>-->
+<!--<ul>-->
+<!--  <li *ngFor="let data of data">-->
+<!--    {{ data.email }}-->
+<!--    {{ data.age }}-->
+<!--  </li>-->
+<!--</ul>-->
+<div class="container-fuild">
+  <div>
+    <div class="fade-in">
+      <div class="row" >
+<!--        <app-template-component></app-template-component>-->
+        <div class="col-sm-6 col-md-4" *ngFor="let data of data">
+          <app-template-component></app-template-component>
+<!--          <div class="card">-->
+<!--            <div class="card-header"> {{data.name}} </div>-->
+<!--            <div class="card-body">-->
+<!--              <p> {{data.email}} </p>-->
+<!--              <p> {{data.address}} </p>-->
+<!--              <p> {{data.age}} </p>-->
+<!--&lt;!&ndash;              auto gennerate poperties&ndash;&gt;-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

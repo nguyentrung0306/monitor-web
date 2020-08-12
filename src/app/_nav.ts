@@ -52,5 +52,10 @@ export const navItems: NavData[] = [
     name: 'Quản lý khách hàng',
     url: '/pages/user',
     icon: 'icon-drop'
+  },
+  {
+    name: 'Dashboard',
+    url: '/pages/dynamicComponent',
+    icon: 'icon-drop'
   }
 ];

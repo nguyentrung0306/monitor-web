@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DemoComponent } from './demo/demo.component';
 import {UserComponent} from './user/user.component';
+import {CreateComponentComponent} from './create-component/create-component.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,13 @@ const routes: Routes = [
       {
         path: 'user',
         component: UserComponent
+      },
+      {
+        path: 'dynamicComponent',
+        component: CreateComponentComponent,
+        data: {
+          title: 'Dynamic component'
+        }
       }
     ]
   }
