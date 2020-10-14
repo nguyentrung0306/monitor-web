@@ -1,16 +1,9 @@
-<!--<div class="card">-->
-<!--  <div class="card-header"> {{data.name}} </div>-->
-<!--  <div class="card-body">-->
-<!--    <p> {{data.email}} </p>-->
-<!--    <p> {{data.address}} </p>-->
-<!--    <p> {{data.age}} </p>-->
-<!--    &lt;!&ndash;              auto gennerate poperties&ndash;&gt;-->
-<!--  </div>-->
-<!--</div>-->
 <div class="card">
-  <div class="card-header"> AAAAA </div>
+  <div class="card-header"> {{dataSub.name}} </div>
   <div class="card-body">
-    <p> Ngày nay JSON (JavaScript Object Notation), với các ưu điểm như dễ sử dụng, dễ đọc đã trở nên cực kỳ phổ biến trong việc giao tiếp dữ liệu giữa các web service.
-      Dưới đây là một ví dụ về 1 dữ liệu JSON: </p>
+    <div *ngFor="let filed of fieldList">
+      <label>{{filed}}:</label>
+      <span style="font-size: 16px; color: #a9169c">{{dataSub[filed]}}</span>
+    </div>
   </div>
 </div>
